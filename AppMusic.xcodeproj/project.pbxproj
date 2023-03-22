@@ -114,6 +114,7 @@
 				29D378E329CA244E00FAD8C8 /* Extensions */,
 				29D378E129CA242C00FAD8C8 /* Model */,
 				29D378E229CA243A00FAD8C8 /* View */,
+				29D378EC29CA2D7500FAD8C8 /* Controller */,
 				29D378B829C9E06A00FAD8C8 /* Assets.xcassets */,
 				29D378BA29C9E06A00FAD8C8 /* LaunchScreen.storyboard */,
 				29D378BD29C9E06A00FAD8C8 /* Info.plist */,
@@ -152,7 +153,6 @@
 				29D378E829CA26D500FAD8C8 /* HomeView.swift */,
 				29D378EA29CA2C8800FAD8C8 /* HomeTableViewCell.swift */,
 				29D378ED29CA2F0F00FAD8C8 /* CardView.swift */,
-				29D378EC29CA2D7500FAD8C8 /* Controller */,
 			);
 			path = View;
 			sourceTree = "<group>";
