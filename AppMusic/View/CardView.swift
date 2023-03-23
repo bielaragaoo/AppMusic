@@ -137,6 +137,13 @@ class CardView: UIView {
         return label
     }()
 
+    private lazy var actionsView: CardActionView = {
+        let view = CardActionView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -171,6 +178,7 @@ class CardView: UIView {
         cardContainerView.addSubview(musicTitleLabel)
         cardContainerView.addSubview(likeAndTimeLabel)
         cardContainerView.addSubview(descriptionMusicLabel)
+        cardContainerView.addSubview(actionsView)
 
         updateLayout(mode: mode ?? .card)
 
@@ -189,9 +197,10 @@ class CardView: UIView {
             containerTopConstraint?.constant = 20
             containerLeadingConstraint?.constant = 15
             containerTrailingConstraint?.constant = -15
-            containerBottomConstraint?.constant = 20
+            containerBottomConstraint?.constant = -20
             descriptionMusicLabel.isHidden = true
         }
+        actionsView.updateStackLayout(mode: mode)
     }
 
     private func setupConstraints() {
@@ -246,6 +255,10 @@ class CardView: UIView {
             descriptionMusicLabel.topAnchor.constraint(equalTo: likeAndTimeLabel.bottomAnchor, constant: 30),
             descriptionMusicLabel.leadingAnchor.constraint(equalTo: cardContainerView.leadingAnchor, constant: 20),
             descriptionMusicLabel.trailingAnchor.constraint(equalTo: cardContainerView.trailingAnchor, constant: -20),
+
+            actionsView.bottomAnchor.constraint(equalTo: cardContainerView.bottomAnchor, constant: -20),
+            actionsView.leadingAnchor.constraint(equalTo: cardContainerView.leadingAnchor, constant: 20),
+            actionsView.trailingAnchor.constraint(equalTo: cardContainerView.trailingAnchor, constant: -20),
         ])
     }
 }

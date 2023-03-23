@@ -21,6 +21,7 @@
 		29D378E929CA26D500FAD8C8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D378E829CA26D500FAD8C8 /* HomeView.swift */; };
 		29D378EB29CA2C8800FAD8C8 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D378EA29CA2C8800FAD8C8 /* HomeTableViewCell.swift */; };
 		29D378EE29CA2F0F00FAD8C8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D378ED29CA2F0F00FAD8C8 /* CardView.swift */; };
+		29D378F029CB7BBA00FAD8C8 /* CardActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D378EF29CB7BBA00FAD8C8 /* CardActionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		29D378E829CA26D500FAD8C8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		29D378EA29CA2C8800FAD8C8 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		29D378ED29CA2F0F00FAD8C8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		29D378EF29CB7BBA00FAD8C8 /* CardActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				29D378E829CA26D500FAD8C8 /* HomeView.swift */,
 				29D378EA29CA2C8800FAD8C8 /* HomeTableViewCell.swift */,
 				29D378ED29CA2F0F00FAD8C8 /* CardView.swift */,
+				29D378EF29CB7BBA00FAD8C8 /* CardActionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				29D378B429C9E06900FAD8C8 /* HomeViewController.swift in Sources */,
 				29D378E529CA24A700FAD8C8 /* NSAttributedString+Extension.swift in Sources */,
 				29D378B029C9E06900FAD8C8 /* AppDelegate.swift in Sources */,
+				29D378F029CB7BBA00FAD8C8 /* CardActionView.swift in Sources */,
 				29D378E729CA24DE00FAD8C8 /* NSTextAttachment+Extension.swift in Sources */,
 				29D378EB29CA2C8800FAD8C8 /* HomeTableViewCell.swift in Sources */,
 				29D378B229C9E06900FAD8C8 /* SceneDelegate.swift in Sources */,
