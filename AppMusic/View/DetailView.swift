@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol DetailViewDelegate: AnyObject {
+    func tapCloseButton()
+}
+
 class DetailView: UIView {
 
     var cardModel: CardViewModel?
     var navBarTopAnchor: NSLayoutConstraint?
+
+    weak var delegate: DetailViewDelegate?
 
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView(frame: .zero)
@@ -47,6 +53,8 @@ class DetailView: UIView {
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 30).isActive = true
         button.backgroundColor = .white.withAlphaComponent(0.3)
         button.layer.cornerRadius = 15
         button.setBackgroundImage(UIImage(named: "back"), for: .normal)
@@ -55,8 +63,13 @@ class DetailView: UIView {
         return button
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(dataView: CardViewModel?) {
+        super.init(frame: CGRect())
+        cardModel = dataView
+
+        DispatchQueue.main.async {
+            self.setupViews()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -64,7 +77,55 @@ class DetailView: UIView {
     }
 
     @objc func closePressed() {
+        delegate?.tapCloseButton()
+    }
 
+    func setupViews() {
+        addSubview(scrollView)
+        scrollView.addSubview(cardView)
+        scrollView.addSubview(cardTableView)
+        scrollView.addSubview(closeButton)
+
+        setupConstraints()
+    }
+
+    func configDelegates(tableViewDelegate: UITableViewDelegate, tableViewDataSource: UITableViewDataSource, scrollDelegate: UIScrollViewDelegate, detailViewDelegate: DetailViewDelegate) {
+        cardTableView.delegate = tableViewDelegate
+        cardTableView.dataSource = tableViewDataSource
+        scrollView.delegate = scrollDelegate
+        self.delegate = detailViewDelegate
+    }
+
+    func setupConstraints() {
+        let window = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .compactMap({$0 as? UIWindowScene}).first?
+            .windows.filter({$0.isKeyWindow}).first
+
+        guard let topPadding = window?.safeAreaInsets.top else { return }
+
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            cardView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: -(topPadding)),
+            cardView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            cardView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            cardView.heightAnchor.constraint(equalToConstant: 500),
+
+            cardTableView.topAnchor.constraint(equalTo: cardView.bottomAnchor),
+            cardTableView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            cardTableView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            cardTableView.heightAnchor.constraint(equalToConstant: CGFloat(80 * (cardModel?.cardList?.count ?? 0) + 20)),
+            cardTableView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+
+            closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+
+
+        ])
     }
     
 }
