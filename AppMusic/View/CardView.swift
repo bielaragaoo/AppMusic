@@ -23,7 +23,7 @@ class CardView: UIView {
     var containerBottomConstraint: NSLayoutConstraint?
 
 
-    private lazy var cardContainerView: UIView = {
+    lazy var cardContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 30
@@ -186,7 +186,7 @@ class CardView: UIView {
         setupConstraints()
     }
 
-    private func updateLayout(mode: CardModeView) {
+    func updateLayout(mode: CardModeView) {
         if mode == .full {
             containerTopConstraint?.constant = 0
             containerLeadingConstraint?.constant = 0
