@@ -14,14 +14,12 @@ enum CardModeView {
 
 class CardView: UIView {
 
-    var mode: CardModeView?
     var dataModel: CardViewModel?
 
     var containerTopConstraint: NSLayoutConstraint?
     var containerLeadingConstraint: NSLayoutConstraint?
     var containerTrailingConstraint: NSLayoutConstraint?
     var containerBottomConstraint: NSLayoutConstraint?
-
 
     lazy var cardContainerView: UIView = {
         let view = UIView()
@@ -144,10 +142,11 @@ class CardView: UIView {
         return view
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(mode: CardModeView) {
+        super.init(frame: CGRect.zero)
 
         setupSubviews()
+        updateLayout(for: mode)
     }
 
     required init?(coder: NSCoder) {
@@ -180,13 +179,11 @@ class CardView: UIView {
         cardContainerView.addSubview(descriptionMusicLabel)
         cardContainerView.addSubview(actionsView)
 
-        updateLayout(mode: mode ?? .card)
-
         setupCardView(data: dataModel ?? CardViewModel())
         setupConstraints()
     }
 
-    func updateLayout(mode: CardModeView) {
+    func updateLayout(for mode: CardModeView) {
         if mode == .full {
             containerTopConstraint?.constant = 0
             containerLeadingConstraint?.constant = 0
@@ -194,20 +191,20 @@ class CardView: UIView {
             containerBottomConstraint?.constant = 0
             descriptionMusicLabel.isHidden = false
         } else {
-            containerTopConstraint?.constant = 20
-            containerLeadingConstraint?.constant = 15
-            containerTrailingConstraint?.constant = -15
-            containerBottomConstraint?.constant = -20
+            containerTopConstraint?.constant = 15
+            containerLeadingConstraint?.constant = 30
+            containerTrailingConstraint?.constant = -30
+            containerBottomConstraint?.constant = 15
             descriptionMusicLabel.isHidden = true
         }
         actionsView.updateStackLayout(mode: mode)
     }
 
     private func setupConstraints() {
-        containerTopConstraint = cardContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 20)
-        containerLeadingConstraint = cardContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
-        containerTrailingConstraint = cardContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
-        containerBottomConstraint = cardContainerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
+        containerTopConstraint = cardContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 15)
+        containerLeadingConstraint = cardContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30)
+        containerTrailingConstraint = cardContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
+        containerBottomConstraint = cardContainerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15)
 
         containerTopConstraint?.isActive = true
         containerLeadingConstraint?.isActive = true
@@ -215,10 +212,9 @@ class CardView: UIView {
         containerBottomConstraint?.isActive = true
 
         NSLayoutConstraint.activate([
-            cardContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            cardContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            cardContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-            cardContainerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            cardContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 15),
+            cardContainerView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            cardContainerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
 
             overlayView.topAnchor.constraint(equalTo: cardContainerView.topAnchor),
             overlayView.leadingAnchor.constraint(equalTo: cardContainerView.leadingAnchor),

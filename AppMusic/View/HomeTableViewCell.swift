@@ -12,7 +12,7 @@ class HomeTableViewCell: UITableViewCell {
     static let identifier = "HomeTableViewCellIdentifier"
 
     private lazy var cardView: CardView = {
-        let card = CardView()
+        let card = CardView(mode: .card)
         card.translatesAutoresizingMaskIntoConstraints = false
         card.clipsToBounds = true
         return card

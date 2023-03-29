@@ -30,9 +30,8 @@ class DetailView: UIView {
     }()
 
     private lazy var cardView: CardView = {
-        let view = CardView()
+        let view = CardView(mode: .full)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.updateLayout(mode: .full)
         view.cardContainerView.layer.cornerRadius = 0
         view.setupCardView(data: cardModel ?? CardViewModel())
         return view
@@ -57,7 +56,7 @@ class DetailView: UIView {
         button.widthAnchor.constraint(equalToConstant: 30).isActive = true
         button.backgroundColor = .white.withAlphaComponent(0.3)
         button.layer.cornerRadius = 15
-        button.setBackgroundImage(UIImage(named: "back"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "back")?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = .white
         button.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
         return button
@@ -106,18 +105,16 @@ class DetailView: UIView {
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             cardView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: -(topPadding)),
-            cardView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            cardView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            cardView.widthAnchor.constraint(equalToConstant: frame.size.width),
             cardView.heightAnchor.constraint(equalToConstant: 500),
 
             cardTableView.topAnchor.constraint(equalTo: cardView.bottomAnchor),
-            cardTableView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            cardTableView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            cardTableView.widthAnchor.constraint(equalToConstant: frame.size.width),
             cardTableView.heightAnchor.constraint(equalToConstant: CGFloat(80 * (cardModel?.cardList?.count ?? 0) + 20)),
             cardTableView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
 
