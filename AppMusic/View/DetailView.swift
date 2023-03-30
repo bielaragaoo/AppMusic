@@ -46,6 +46,7 @@ class DetailView: UIView {
         tableView.showsHorizontalScrollIndicator = false
         tableView.isScrollEnabled = false
         tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: DetailTableViewCell.identifier)
         return tableView
     }()
 
@@ -120,8 +121,6 @@ class DetailView: UIView {
 
             closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-
-
         ])
     }
     

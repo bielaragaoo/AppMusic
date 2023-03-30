@@ -214,7 +214,7 @@ class CardView: UIView {
         NSLayoutConstraint.activate([
             cardContainerView.topAnchor.constraint(equalTo: topAnchor, constant: 15),
             cardContainerView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            cardContainerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
+            cardContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             overlayView.topAnchor.constraint(equalTo: cardContainerView.topAnchor),
             overlayView.leadingAnchor.constraint(equalTo: cardContainerView.leadingAnchor),

@@ -9,7 +9,6 @@ import UIKit
 
 class DetailCellView: UIView {
 
-
     private lazy var thumbImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,11 +60,17 @@ class DetailCellView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        setupView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setupCell(data: CardListModel) {
+        titleLabel.text = data.listTitle
+        subtitleLabel.text = data.listSubtitle
+        thumbImage.image = UIImage(named: data.listImage ?? "")
     }
 
     private func setupView() {
@@ -91,15 +96,11 @@ class DetailCellView: UIView {
             subtitleLabel.leadingAnchor.constraint(equalTo: thumbImage.trailingAnchor, constant: 15),
             subtitleLabel.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -15),
 
-            favoriteButton.leadingAnchor.constraint(equalTo: moreButton.leadingAnchor, constant: 20),
+            favoriteButton.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor, constant: -20),
             favoriteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             moreButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             moreButton.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }
-
-
-
-
 }

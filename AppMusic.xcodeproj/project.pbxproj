@@ -26,6 +26,7 @@
 		29D378F029CB7BBA00FAD8C8 /* CardActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D378EF29CB7BBA00FAD8C8 /* CardActionView.swift */; };
 		29D378F229CCE29E00FAD8C8 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D378F129CCE29E00FAD8C8 /* DetailView.swift */; };
 		29D378F429CCE2AD00FAD8C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D378F329CCE2AD00FAD8C8 /* DetailViewController.swift */; };
+		29FE199629D5B18600CF6F4C /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FE199529D5B18600CF6F4C /* CustomNavBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		29D378EF29CB7BBA00FAD8C8 /* CardActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActionView.swift; sourceTree = "<group>"; };
 		29D378F129CCE29E00FAD8C8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		29D378F329CCE2AD00FAD8C8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		29FE199529D5B18600CF6F4C /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				29D378F129CCE29E00FAD8C8 /* DetailView.swift */,
 				298F229629D35E89000843BE /* DetailTableViewCell.swift */,
 				298F229829D35F0A000843BE /* DetailCellView.swift */,
+				29FE199529D5B18600CF6F4C /* CustomNavBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				29D378B429C9E06900FAD8C8 /* HomeViewController.swift in Sources */,
 				29D378E529CA24A700FAD8C8 /* NSAttributedString+Extension.swift in Sources */,
 				29D378F229CCE29E00FAD8C8 /* DetailView.swift in Sources */,
+				29FE199629D5B18600CF6F4C /* CustomNavBar.swift in Sources */,
 				29D378B029C9E06900FAD8C8 /* AppDelegate.swift in Sources */,
 				29D378F029CB7BBA00FAD8C8 /* CardActionView.swift in Sources */,
 				29D378E729CA24DE00FAD8C8 /* NSTextAttachment+Extension.swift in Sources */,
