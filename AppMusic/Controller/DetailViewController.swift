@@ -7,10 +7,16 @@
 
 import UIKit
 
+enum StateAnimation {
+    case long
+    case short
+}
+
 class DetailViewController: UIViewController {
 
     var viewInstance: DetailView?
     var cardModel: CardViewModel?
+    var valueAnimation: StateAnimation = .long
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -48,6 +54,19 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension DetailViewController: UIScrollViewDelegate {
 
+    private func animationWithView() {
+        UIView.animateKeyframes(withDuration: 0.3, delay: 0) {
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    private func validateAnimation(actualState: StateAnimation, updateState: StateAnimation) {
+        if valueAnimation == actualState {
+            animationWithView()
+        }
+        valueAnimation = updateState
+    }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let window = UIApplication.shared.connectedScenes
             .filter({$0.activationState == .foregroundActive})
@@ -58,23 +77,18 @@ extension DetailViewController: UIScrollViewDelegate {
 
         if scrollView.contentOffset.y >= 300 {
             viewInstance?.navBarTopAnchor?.constant = 0
+
+            validateAnimation(actualState: .long, updateState: .short)
         } else {
             viewInstance?.navBarTopAnchor?.constant = -((topPadding) + 80)
-        }
 
-
-        UIView.animateKeyframes(withDuration: 0.3, delay: 0) {
-            self.view.layoutIfNeeded()
+            validateAnimation(actualState: .short, updateState: .long)
         }
     }
-
 }
 
 extension DetailViewController: DetailViewDelegate {
     func tapCloseButton() {
         self.dismiss(animated: true, completion: nil)
-
     }
-
-
 }
