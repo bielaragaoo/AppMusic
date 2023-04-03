@@ -48,6 +48,26 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension DetailViewController: UIScrollViewDelegate {
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let window = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .compactMap({$0 as? UIWindowScene}).first?
+            .windows.filter({$0.isKeyWindow}).first
+
+        guard let topPadding = window?.safeAreaInsets.top else { return }
+
+        if scrollView.contentOffset.y >= 300 {
+            viewInstance?.navBarTopAnchor?.constant = 0
+        } else {
+            viewInstance?.navBarTopAnchor?.constant = -((topPadding) + 80)
+        }
+
+
+        UIView.animateKeyframes(withDuration: 0.3, delay: 0) {
+            self.view.layoutIfNeeded()
+        }
+    }
+
 }
 
 extension DetailViewController: DetailViewDelegate {

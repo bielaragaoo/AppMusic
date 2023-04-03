@@ -63,6 +63,14 @@ class DetailView: UIView {
         return button
     }()
 
+    private lazy var navBar: CustomNavBar = {
+        let view = CustomNavBar()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.setupNavBar(data: self.cardModel ?? CardViewModel())
+        return view
+    }()
+
     init(dataView: CardViewModel?) {
         super.init(frame: CGRect())
         cardModel = dataView
@@ -84,7 +92,8 @@ class DetailView: UIView {
         addSubview(scrollView)
         scrollView.addSubview(cardView)
         scrollView.addSubview(cardTableView)
-        scrollView.addSubview(closeButton)
+        addSubview(navBar)
+        addSubview(closeButton)
 
         setupConstraints()
     }
@@ -121,7 +130,14 @@ class DetailView: UIView {
 
             closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+
+            navBar.leadingAnchor.constraint(equalTo: leadingAnchor),
+            navBar.trailingAnchor.constraint(equalTo: trailingAnchor),
+            navBar.heightAnchor.constraint(equalToConstant: ((topPadding) + 80))
         ])
+
+        navBarTopAnchor = navBar.topAnchor.constraint(equalTo: topAnchor, constant: -((topPadding) + 60))
+        navBarTopAnchor?.isActive = true
     }
     
 }
