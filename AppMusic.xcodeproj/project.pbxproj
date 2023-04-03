@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29631C4329DB4E03001B8A93 /* CustomPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29631C4229DB4E03001B8A93 /* CustomPlayerView.swift */; };
 		298F229729D35E89000843BE /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F229629D35E89000843BE /* DetailTableViewCell.swift */; };
 		298F229929D35F0A000843BE /* DetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F229829D35F0A000843BE /* DetailCellView.swift */; };
 		29D378B029C9E06900FAD8C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D378AF29C9E06900FAD8C8 /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29631C4229DB4E03001B8A93 /* CustomPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerView.swift; sourceTree = "<group>"; };
 		298F229629D35E89000843BE /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		298F229829D35F0A000843BE /* DetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellView.swift; sourceTree = "<group>"; };
 		29D378AC29C9E06900FAD8C8 /* AppMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,7 @@
 				298F229629D35E89000843BE /* DetailTableViewCell.swift */,
 				298F229829D35F0A000843BE /* DetailCellView.swift */,
 				29FE199529D5B18600CF6F4C /* CustomNavBar.swift */,
+				29631C4229DB4E03001B8A93 /* CustomPlayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -229,7 +232,6 @@
 				B2A72661121DB6616B24DA04 /* Pods-AppMusicTests.debug.xcconfig */,
 				9A713786A01B577BCD430441 /* Pods-AppMusicTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -475,6 +477,7 @@
 				298F229929D35F0A000843BE /* DetailCellView.swift in Sources */,
 				29D378EE29CA2F0F00FAD8C8 /* CardView.swift in Sources */,
 				29D378E929CA26D500FAD8C8 /* HomeView.swift in Sources */,
+				29631C4329DB4E03001B8A93 /* CustomPlayerView.swift in Sources */,
 				298F229729D35E89000843BE /* DetailTableViewCell.swift in Sources */,
 				29D378F429CCE2AD00FAD8C8 /* DetailViewController.swift in Sources */,
 				29D378B429C9E06900FAD8C8 /* HomeViewController.swift in Sources */,

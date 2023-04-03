@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MarqueeLabel
 
 enum StateAnimation {
     case long

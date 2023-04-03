@@ -71,6 +71,14 @@ class DetailView: UIView {
         return view
     }()
 
+    private lazy var playerView: CustomPlayerView = {
+        let view = CustomPlayerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        return view
+    }()
+
     init(dataView: CardViewModel?) {
         super.init(frame: CGRect())
         cardModel = dataView
@@ -94,6 +102,7 @@ class DetailView: UIView {
         scrollView.addSubview(cardTableView)
         addSubview(navBar)
         addSubview(closeButton)
+        addSubview(playerView)
 
         setupConstraints()
     }
@@ -133,7 +142,12 @@ class DetailView: UIView {
 
             navBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             navBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            navBar.heightAnchor.constraint(equalToConstant: ((topPadding) + 80))
+            navBar.heightAnchor.constraint(equalToConstant: ((topPadding) + 80)),
+
+            playerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            playerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            playerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
         ])
 
         navBarTopAnchor = navBar.topAnchor.constraint(equalTo: topAnchor, constant: -((topPadding) + 60))
