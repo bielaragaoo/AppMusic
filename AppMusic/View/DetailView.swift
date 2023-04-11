@@ -15,6 +15,7 @@ class DetailView: UIView {
 
     var cardModel: CardViewModel?
     var navBarTopAnchor: NSLayoutConstraint?
+    var playerViewBottomAnchor: NSLayoutConstraint?
 
     weak var delegate: DetailViewDelegate?
 
@@ -71,7 +72,7 @@ class DetailView: UIView {
         return view
     }()
 
-    private lazy var playerView: CustomPlayerView = {
+    lazy var playerView: CustomPlayerView = {
         let view = CustomPlayerView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .black
@@ -146,12 +147,11 @@ class DetailView: UIView {
 
             playerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             playerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            playerView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
         ])
-
         navBarTopAnchor = navBar.topAnchor.constraint(equalTo: topAnchor, constant: -((topPadding) + 60))
         navBarTopAnchor?.isActive = true
+
+        playerViewBottomAnchor = playerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 120)
+        playerViewBottomAnchor?.isActive = true
     }
-    
 }
